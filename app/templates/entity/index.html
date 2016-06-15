@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block meta_title %} List of all entities {% endblock %}
+
+{% block content %}
+
+    {% if object_list.items %}
+        {% for entity in object_list.items %}
+            <div class="blog-post">
+                <h2 class="blog-post-title"><a href="{{ url_for('entity.view', id=entity.id) }}">{{ entity.name }}</a></h2>
+                <div class="blog-post-content">
+                    {{ entity.content }}
+                </div>
+            </div><!-- /.blog-post -->
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info">There is no posts added yet. Wanna <a href="{{ url_for('entity.create') }}">add some</a>?</div>
+    {% endif %}
+
+{% endblock %}
+
+{% block pagination %}
+    {% import "pagination.html" as pagination_macros %}
+    {{ pagination_macros.render_pagination(object_list, 'entity.index') }}
+{% endblock pagination %}

@@ -1,0 +1,23 @@
+{% macro render_pagination(pagination, endpoint, ep_kwargs={}) %}
+    {% if pagination.pages > 1 %}
+        <div class="row">
+            <div class=pagination>
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        {%- for page in pagination.iter_pages() %}
+                            {% if page %}
+                                {% if page != pagination.page %}
+                                    <a class="btn btn-default" href="{{ url_for(endpoint, page=page, **ep_kwargs) }}">{{ page }}</a>
+                                {% else %}
+                                    <a class="btn btn-default active" href="{{ url_for(endpoint, page=page, **ep_kwargs) }}">{{ page }}</a>
+                                {% endif %}
+                            {% else %}
+                                <a class="btn btn-default disabled" href="#">...</a>
+                            {% endif %}
+                        {%- endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}

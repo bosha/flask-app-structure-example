@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block meta_title %} Confirm entity removing {% endblock %}
+
+{% block content %}
+
+    {% include "messages.html" %}
+
+    {% if object %}
+        <form class="form-horizontal" action="{{ url_for('entity.remove', id=object.id) }}" method="post">
+            <div class="panel panel-info">
+                <div class="panel-heading"><strong>Information</strong></div>
+
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>ID:</dt>
+                        <dd>{{ object.id }}</dd>
+
+                        <dt>Name: </dt>
+                        <dd>{{ object.name }}</dd>
+                    </dl>
+                </div>
+
+                <div class="panel-footer">
+                    <br/>
+                    <div class="form-group">
+                        <div class="col-xs-offset-0 col-xs-10">
+                            <input type="submit" value="Remove" class="btn btn-danger btn-group-sm" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    {% endif %}
+{% endblock %}

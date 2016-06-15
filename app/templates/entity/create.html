@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block meta_title %} Create a new entity {% endblock %}
+
+{% block content %}
+
+    {% include 'form-errors.html' %}
+    {% import 'form-macros.html' as macros %}
+
+    <div class="col-md-6">
+        {% call macros.render_form(form, action_url=url_for("entity.create"), action_text="Create", btn_class="btn btn-primary") %}
+            {{ macros.render_field(form.name, label_visible=True, placeholder="Name", type="text", show_help=True) }}
+            {{ macros.render_field(form.content, label_visible=True, placeholder="Content", type="text", show_help=True) }}
+        {% endcall %}
+    </div>
+{% endblock %}

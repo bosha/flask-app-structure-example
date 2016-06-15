@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{ object.name }}</h2>
+        <div class="blog-post-content">
+            {{ object.content }}
+        </div>
+        <hr/>
+        <div class="blog-post-meta">
+            <a href="{{ url_for('entity.update', id=object.id) }}" class="btn btn-warning">Modify</a>
+            <a href="{{ url_for('entity.remove', id=object.id) }}" class="btn btn-danger">Remove</a>
+        </div>
+    </div><!-- /.blog-post -->
+
+    <h3>Comments!</h3>
+    {% if object.comments|length > 0 %}
+        {% for comment in object.comments %}
+            {% if comment.email %}
+                <strong><a href="mailto:{{ comment.email }}">{{ comment.name }}</a></strong>
+            {% else %}
+                <strong>{{ commment.name }}</strong>
+            {% endif %}
+            <br/>
+            {{ comment.content }}
+            <hr/>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info">There is no comment yet. Be the first!</div>
+    {% endif %}
+
+    <h3>Submit your comment!</h3>
+    {% include 'form-errors.html' %}
+    {% import 'form-macros.html' as macros %}
+    {% call macros.render_form(form, action_url=url_for("comment.add"), action_text="Comment!", btn_class="btn btn-primary") %}
+        {{ macros.render_field(form.name, label_visible=True, placeholder="Name", type="text", show_help=True) }}
+        {{ macros.render_field(form.email, label_visible=True, placeholder="Name", type="text", show_help=True) }}
+        {{ macros.render_field(form.content, label_visible=True, placeholder="Content", type="text", show_help=True) }}
+        {{ macros.render_field(form.entity_id, label_visible=False, type="hidden", show_help=False, value=object.id) }}
+    {% endcall %}
+
+{% endblock content %}

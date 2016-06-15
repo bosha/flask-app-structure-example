@@ -1,0 +1,7 @@
+{% if form.errors is defined %}
+    {% for field, errors in form.errors.items() %}
+        <div class="alert alert-error">
+            <small><strong>{{ form[field].label.text }}</strong>: {{ ', '.join(errors) }}</small>
+        </div>
+    {% endfor %}
+{% endif %}

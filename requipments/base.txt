@@ -1,0 +1,14 @@
+click==6.6
+Flask==0.11.1
+Flask-Script==2.0.5
+Flask-SQLAlchemy==2.1
+Flask-WTF==0.12
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+psycopg2==2.6.1
+SQLAlchemy==1.0.13
+Werkzeug==0.11.10
+WTForms==2.1
+Flask-Migrate==1.8.0
+python-slugify==1.2.0
