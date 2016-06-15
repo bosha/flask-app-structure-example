@@ -16,6 +16,6 @@ export APP_SETTINGS="config.DevelopmentConfig"
 export DATABASE_URL='postgresql://DBUSERNAME:DBPASSWORD@localhost/DBNAME'
 python manage.py db init
 python manage.py db migrate
-python manage.py db update
+python manage.py db upgrade
 python manage.py runserver
 ```
