@@ -1,7 +1,7 @@
 # Flask structure example
 
 Это законченный пример к записи в моем блоге 
-[правильной структуры flask приложения](https://the-bosha.ru/2016/06/03/python-flask-freimvork-pravilnaia-struktura-prilozheniia/).
+[правильная структура flask приложения](https://the-bosha.ru/2016/06/03/python-flask-freimvork-pravilnaia-struktura-prilozheniia/).
 
 ## Setup
 
