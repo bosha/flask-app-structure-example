@@ -7,7 +7,7 @@
 
 ```
 git clone https://github.com/bosha/flask-app-structure-example/
-cd flask-structure-example
+cd flask-app-structure-example
 virtualenv -p python3 env
 source env/bin/activate
 pip install -r requipments/development.txt
